@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;vista.JPañadir&apos; to &apos;JPanyadir&apos;&#x0D;&#x0A;- Original project: &apos;PanelBBDDveterionario&apos;&#x0D;&#x0A;- Original element: &apos;vista.JPañadir&apos;&#x0D;&#x0A;- Renamed element: &apos;vista.JPanyadir&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;JPañadir&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;vista{JPañadir.java[JPañadir" matchStrategy="1" name="JPanyadir" qualified="false" references="true" similarDeclarations="false" stamp="1740397569691" textual="false" version="1.0"/>
+</session>

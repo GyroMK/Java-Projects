@@ -1,0 +1,24 @@
+package vista;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class JPanyadir extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+			
+		JButton btnNewButton = new JButton("Añadir");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nombre = text
+			}
+		});
+		btnNewButton.setBounds(285, 182, 89, 23);
+		add(btnNewButton);
+
+	}
+}

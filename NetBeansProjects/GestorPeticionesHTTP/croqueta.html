@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HexaBEAT!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for the new buttons */
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icons button {
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .discord-button {
+            background-image: url('./ui/discord-icon.png'); /* Replace with the actual path to your Discord icon */
+        }
+
+        .create-song-button {
+            background-image: url('./ui/create-icon.png'); /* Replace with the actual path to your Create Song icon */
+        }
+
+        .search-profile-button {
+            background-image: url('./ui/search-icon.png'); /* Replace with the actual path to your Search Profile icon */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="ui/TitleFrame.png" alt="HexaBEAT! Logo">
+        </div>
+        <div class="icons">
+            <a href="https://store.steampowered.com/app/1589270/HexaBeat/" target="_blank"><button class="download-button"></button></a>
+            <a href="https://phyoxent.com/discord/" target="_blank"><button class="discord-button"></button></a>
+            <button class="create-song-button" onclick="goToCreateSong()"></button>
+            <button class="search-profile-button" onclick="goToSearchProfile()"></button>
+            <div id="account-container">
+                <button id="accountButton" class="account-button">Login Account</button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="main-content">
+            <div class="youtube-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rnAV1coSb-0?si=lBu8uii2JBG6J_SV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="game-description">
+                <h1>HexaBEAT!</h1>
+                <p>HexaBEAT! is a thrilling rhythm game that puts your timing to the test. Control a hexagon with three colored faces, moving to the beat of the music. As you progress, the challenges ramp up, offering an addictive blend of skill and rhythm.</p>
+                <a href="https://store.steampowered.com/app/1589270/HexaBeat/" target="_blank"><button class="play-now-button">PLAY NOW!</button></a>
+            </div>
+        </section>
+        
+        <section class="songs">
+            <h2>SONGS</h2>
+            <p>You can find more songs on our Discord, created by the community. As developers, we don't make or share the songs ourselves. Instead, community members can share their creations and songs through the Discord community to be played in the game. In the future, we plan to manually add selected songs to the game.</p>
+            <div class="discord-widget">
+                <iframe src="https://discord.com/widget?id=1238708865542000661&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+        </section>
+
+        <section class="leaderboard">
+            <h2>GLOBAL LEADERBOARD</h2>
+            <div id="leaderboard-container">
+                <!-- Leaderboard content will be inserted here -->
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <!-- Add any footer content here -->
+    </footer>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Your custom script -->
+    <script src="js/script.js"></script>
+</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl504980'},{'dcenter':'p3'},{'cp_id':'10019851'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script></html>

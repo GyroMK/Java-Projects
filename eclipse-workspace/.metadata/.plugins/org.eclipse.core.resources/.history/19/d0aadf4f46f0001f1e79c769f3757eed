@@ -1,0 +1,27 @@
+package vista;
+
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+
+public class PanelBorrar extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelBorrar() {
+		setLayout(null);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(10, 11, 430, 141);
+		add(textPane);
+		
+		JButton btnNewButton = new JButton("Borrar");
+		btnNewButton.setBounds(174, 177, 89, 23);
+		add(btnNewButton);
+
+	}
+}

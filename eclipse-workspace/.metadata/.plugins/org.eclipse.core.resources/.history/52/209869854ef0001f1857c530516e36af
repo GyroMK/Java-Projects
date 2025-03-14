@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module AplicacionConPaneles {
+	requires java.desktop;
+}

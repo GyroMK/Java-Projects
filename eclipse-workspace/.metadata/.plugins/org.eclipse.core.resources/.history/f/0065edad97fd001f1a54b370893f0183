@@ -1,0 +1,54 @@
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+
+public class Ejer1 extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	ej1 ej1 = new ej1(getName(),);
+
+	/**
+	 * Create the panel.
+	 */
+	public Ejer1() {
+		setLayout(null);
+		
+		JLabel Lblichi = new JLabel("");
+		Lblichi.setIcon(new ImageIcon(Ejer1.class.getResource("/img/ichika.png")));
+		Lblichi.setBounds(10, 11, 68, 100);
+		add(Lblichi);
+		
+		JLabel Lblnino = new JLabel("");
+		Lblnino.setIcon(new ImageIcon(Ejer1.class.getResource("/img/nino.png")));
+		Lblnino.setBounds(20, 122, 68, 100);
+		add(Lblnino);
+		
+		JLabel LblMiku = new JLabel("");
+		LblMiku.setIcon(new ImageIcon(Ejer1.class.getResource("/img/miku.png")));
+		LblMiku.setBounds(30, 233, 68, 100);
+		add(LblMiku);
+		
+		JLabel LblYotsu = new JLabel("");
+		LblYotsu.setIcon(new ImageIcon(Ejer1.class.getResource("/img/yotsuba.png")));
+		LblYotsu.setBounds(20, 344, 68, 100);
+		add(LblYotsu);
+		
+		JLabel LblItsu = new JLabel("");
+		LblItsu.setIcon(new ImageIcon(Ejer1.class.getResource("/img/itsuki.png")));
+		LblItsu.setBounds(20, 478, 68, 100);
+		add(LblItsu);
+
+		ej1 Ichika = new ej1("Ichika", Lblichi);
+		ej1 Nino = new ej1("Nino", Lblnino);
+		ej1 Miku = new ej1("Miku", LblMiku);
+		ej1 Yotsuba = new ej1("Yotsuba", LblYotsu);
+		ej1 Itsuki = new ej1("Itsuki", LblItsu);
+		
+		Ichika.start();
+		Nino.start();
+		Miku.start();
+		Yotsuba.start();
+		Itsuki.start();
+	}
+}

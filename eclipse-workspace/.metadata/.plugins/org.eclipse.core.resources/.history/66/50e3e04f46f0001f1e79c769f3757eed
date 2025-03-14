@@ -1,0 +1,28 @@
+package vista;
+
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class PanelBuscar extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField textField;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelBuscar() {
+		setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(28, 11, 384, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("buscar");
+		btnNewButton.setBounds(165, 42, 89, 23);
+		add(btnNewButton);
+
+	}
+}

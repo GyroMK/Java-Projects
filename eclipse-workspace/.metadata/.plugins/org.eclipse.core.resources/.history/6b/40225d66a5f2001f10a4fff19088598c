@@ -1,0 +1,21 @@
+package vista;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+
+public class JPanyadir extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Create the panel.
+	 */
+	public JPanyadir() {
+		setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(112, 86, 89, 23);
+		add(btnNewButton);
+
+	}
+}
