@@ -4,15 +4,18 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.table.DefaultTableModel;
 
+import controlador.Bbdd_Control;
+import modelo.Mascotas;
+
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
@@ -32,10 +35,6 @@ public class Consulta extends JPanel {
 
 	public Consulta() {
 		setLayout(null);
-
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBounds(0, 0, 954, 24);
-		add(toolBar);
 
 		cmbId = new JComboBox();
 		cmbId.addActionListener(new ActionListener() {
@@ -84,7 +83,7 @@ public class Consulta extends JPanel {
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(289, 52, 79, 14);
 		add(lblNombre);
-		
+
 		lblEspecie = new JLabel("Especie");
 		lblEspecie.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEspecie.setBounds(554, 52, 79, 14);
@@ -157,23 +156,48 @@ public class Consulta extends JPanel {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
 			Statement consulta = conexion.createStatement();
+
 			if (cmbTipoAnimal.getSelectedItem().toString().equals("Selecciona una especie")) {
-				modeloTabla.setRowCount(0);
+				modeloTabla.setRowCount(0); // Vacía la tabla
 			} else {
-				ResultSet registro = consulta
-						.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-								+ "from mascotas " + "where tipoAnimal = '" + cmbTipoAnimal.getSelectedItem() + "'");
+				Bbdd_Control bd = new Bbdd_Control();
+				ArrayList<Mascotas> arrLMascotas = new ArrayList<>();
+				Mascotas miMascota = new Mascotas();
 
 				modeloTabla.setRowCount(0);
 
-				while (registro.next()) {
-					modeloTabla.addRow(new Object[] {
+				// Guardamos en el atributo tipoAnimal el contenido del JComboBox de TipoAnimal
+				miMascota.setTipoAnimal(cmbTipoAnimal.getSelectedItem().toString());
 
-							registro.getInt("idMascota"), registro.getString("nombre"),
-							registro.getString("tipoAnimal"), registro.getInt("edad"),
-							registro.getString("descripcionSintomas"), registro.getString("vacunas"), });
+				// Pasamos como parámetro el tipoAnimal y recogemos en arrLMascotas el resultado de la consulta
+				arrLMascotas = bd.consultaMascotasConFiltro(miMascota);
+
+				// Recorremos el arrLMascotas y lo mostramos en el JTable
+				for (Mascotas mascotaActual : arrLMascotas) {
+					modeloTabla.addRow(new Object[] {
+							mascotaActual.getIdMascota(), 
+							mascotaActual.getNombre(),
+							mascotaActual.getTipoAnimal(), 
+							mascotaActual.getEdad(),
+							mascotaActual.getDescripcionSintomas(), 
+							mascotaActual.getVacunas() 
+					});
 				}
 
+				/*
+				 * ResultSet registro = consulta
+				 * .executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
+				 * + "from mascotas " + "where tipoAnimal = '" + cmbTipoAnimal.getSelectedItem()
+				 * + "'");
+				 * 
+				 * 
+				 * while (registro.next()) { modeloTabla.addRow(new Object[] {
+				 * 
+				 * registro.getInt("idMascota"), registro.getString("nombre"),
+				 * registro.getString("tipoAnimal"), registro.getInt("edad"),
+				 * registro.getString("descripcionSintomas"), registro.getString("vacunas"), });
+				 * }
+				 */
 			}
 
 			conexion.close();

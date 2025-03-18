@@ -56,56 +56,47 @@ public class Bbdd_Control {
         return null;
     }
 
-//    public ArrayList<Mascotas> consultaGeneral(Mascotas m) {
-//        Consola c = new Consola();
-//        ArrayList<Mascotas> arrlMascotas = new ArrayList<>();
-//        
-//
-//        ResultSet registro = null;
-//
-//        try {
-//            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
-//            Statement consulta = conexion.createStatement();
-//
-//            if (m.getIdMascota() != -1) {
-//
-//                registro = consulta.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-//                        + "from mascotas where idMascota="
-//                        + m.getIdMascota());
-//            } else if (!m.getNombre().equals("ERROR")) {
-//                registro = consulta.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-//                        + "from mascotas where nombre='"
-//                        + m.getNombre() + "'");
-//            } else if (!m.getTipoAnimal().equals("ERROR")) {
-//                registro = consulta.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-//                        + "from mascotas where tipoAnimal='" 
-//                        + m.getTipoAnimal() + "'");
-//            }
-//
-//            Mascotas mimascota = null;
-//            while (registro.next()) {
-//                mimascota = new Mascotas();
-//                mimascota.setIdMascota(Integer.parseInt(registro.getString("idMascota")));
-//                mimascota.setNombre(registro.getString("nombre"));
-//                mimascota.setTipoAnimal(registro.getString("tipoAnimal"));
-//                mimascota.setEdad(Integer.parseInt(registro.getString("edad")));
-//                mimascota.setDescripcionSintomas(registro.getString("descripcionSintomas"));
-//                mimascota.setVacunas(registro.getString("vacunas"));
-//                
-//                c.muestraDatos(mimascota);
-//                arrlMascotas.add(mimascota);
-//                System.out.println(" dentro " + arrlMascotas.size());
-//            }
-//            
-//            System.out.println(" hay " + arrlMascotas.size());
-//
-//            conexion.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return arrlMascotas;
-//    }
+    public ArrayList<Mascotas> consultaMascotasConFiltro(Mascotas m) {
+        ArrayList<Mascotas> arrlMascotas = new ArrayList<>();
+        ResultSet registro = null;
+
+        try {
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+            Statement consulta = conexion.createStatement();
+
+            if (m.getIdMascota() != -1) {
+                registro = consulta.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
+                        + "from mascotas where idMascota="
+                        + m.getIdMascota());
+            } else if (!m.getNombre().equals("ERROR")) {
+                registro = consulta.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
+                        + "from mascotas where nombre='"
+                        + m.getNombre() + "'");
+            } else if (!m.getTipoAnimal().equals("ERROR")) {
+                registro = consulta.executeQuery("select * from mascotas where tipoAnimal='" 
+                        + m.getTipoAnimal() + "'");
+            }
+
+            Mascotas mimascota = null;
+            while (registro.next()) {
+                mimascota = new Mascotas();
+                mimascota.setIdMascota(Integer.parseInt(registro.getString("idMascota")));
+                mimascota.setNombre(registro.getString("nombre"));
+                mimascota.setTipoAnimal(registro.getString("tipoAnimal"));
+                mimascota.setEdad(Integer.parseInt(registro.getString("edad")));
+                mimascota.setDescripcionSintomas(registro.getString("descripcionSintomas"));
+                mimascota.setVacunas(registro.getString("vacunas"));
+                
+                arrlMascotas.add(mimascota);
+            }
+
+            conexion.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return arrlMascotas;
+    }
 
     public void modificaDatos(Mascotas m) {
         Connection conexion;

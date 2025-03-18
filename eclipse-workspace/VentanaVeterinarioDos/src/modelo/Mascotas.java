@@ -16,7 +16,7 @@ public class Mascotas {
         this.idMascota=-1;
         this.nombre="ERROR";
         this.tipoAnimal="ERROR";
-        this.edad=000000000;
+        this.edad=-1;
         this.descripcionSintomas="ERROR";
         this.vacunas="ERROR";
     }
