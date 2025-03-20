@@ -5,7 +5,7 @@ import javax.swing.JToolBar;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -28,10 +28,10 @@ public class Consulta extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JComboBox cmbId;
 	private JComboBox cmbNombre;
-	private JComboBox cmbTipoAnimal;
-	private JTable tablaMascotas;
+	private JComboBox cmbTipo;
+	private JTable tablaWaifus;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
-	private JLabel lblEspecie;
+	private JLabel lblTipo;
 
 	public Consulta() {
 		setLayout(null);
@@ -54,27 +54,27 @@ public class Consulta extends JPanel {
 		cmbNombre.setBounds(378, 49, 166, 21);
 		add(cmbNombre);
 
-		cmbTipoAnimal = new JComboBox();
-		cmbTipoAnimal.addActionListener(new ActionListener() {
+		cmbTipo = new JComboBox();
+		cmbTipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cargaTablaEspecie();
 			}
 		});
-		cmbTipoAnimal.setBounds(643, 49, 166, 21);
-		add(cmbTipoAnimal);
+		cmbTipo.setBounds(643, 49, 166, 21);
+		add(cmbTipo);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(58, 116, 751, 296);
 		add(scrollPane);
 
-		tablaMascotas = new JTable();
-		scrollPane.setViewportView(tablaMascotas);
-		tablaMascotas.setBackground(new Color(255, 182, 193));
-		tablaMascotas.setForeground(new Color(0, 0, 0));
-		modeloTabla.setColumnIdentifiers(new Object[] { "Id", "Nombre", "Especie", "Edad", "Síntomas", "Vacunas" });
-		tablaMascotas.setModel(modeloTabla);
+		tablaWaifus = new JTable();
+		scrollPane.setViewportView(tablaWaifus);
+		tablaWaifus.setBackground(new Color(255, 182, 193));
+		tablaWaifus.setForeground(new Color(0, 0, 0));
+		modeloTabla.setColumnIdentifiers(new Object[] { "Id", "Nombre", "Apellido", "Edad", "Tipo", "Anime", "Fecha" });
+		tablaWaifus.setModel(modeloTabla);
 
-		JLabel lblId = new JLabel("Id Mascota");
+		JLabel lblId = new JLabel("Id");
 		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblId.setBounds(10, 52, 79, 14);
 		add(lblId);
@@ -84,10 +84,10 @@ public class Consulta extends JPanel {
 		lblNombre.setBounds(289, 52, 79, 14);
 		add(lblNombre);
 
-		lblEspecie = new JLabel("Especie");
-		lblEspecie.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEspecie.setBounds(554, 52, 79, 14);
-		add(lblEspecie);
+		lblTipo = new JLabel("Tipo");
+		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblTipo.setBounds(554, 52, 79, 14);
+		add(lblTipo);
 
 		modeloTabla.setRowCount(0);
 
@@ -95,23 +95,27 @@ public class Consulta extends JPanel {
 
 	public void cargaTablaId() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
 			if (cmbId.getSelectedItem().toString().equals("Selecciona una Id")) {
 				modeloTabla.setRowCount(0);
 			} else {
 				ResultSet registro = consulta
-						.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-								+ "from mascotas " + "where idMascota = " + cmbId.getSelectedItem());
+						.executeQuery("select id, nombre, apellido, edad, tipo, anime, fecha_nacimiento "
+								+ "from waifus " + "where id = " + cmbId.getSelectedItem());
 
 				modeloTabla.setRowCount(0);
 
 				while (registro.next()) {
 					modeloTabla.addRow(new Object[] {
 
-							registro.getInt("idMascota"), registro.getString("nombre"),
-							registro.getString("tipoAnimal"), registro.getInt("edad"),
-							registro.getString("descripcionSintomas"), registro.getString("vacunas"), });
+							registro.getInt("id"), 
+							registro.getString("nombre"),
+							registro.getString("apellido"), 
+							registro.getInt("edad"),
+							registro.getString("tipo"), 
+							registro.getString("anime"),
+							registro.getString("fecha_nacimiento"), });
 				}
 			}
 
@@ -124,24 +128,28 @@ public class Consulta extends JPanel {
 
 	public void cargaTablaNombre() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
 			if (cmbNombre.getSelectedItem().toString().equals("Selecciona un nombre")) {
 				modeloTabla.setRowCount(0);
 			} else {
 
 				ResultSet registro = consulta
-						.executeQuery("select idMascota, nombre, tipoAnimal, edad, descripcionSintomas, vacunas "
-								+ "from mascotas " + "where nombre = '" + cmbNombre.getSelectedItem() + "'");
+						.executeQuery("select id, nombre, apellido, edad, tipo, anime, fecha_nacimiento "
+								+ "from waifus " + "where nombre = '" + cmbNombre.getSelectedItem() + "'");
 
 				modeloTabla.setRowCount(0);
 
 				while (registro.next()) {
 					modeloTabla.addRow(new Object[] {
 
-							registro.getInt("idMascota"), registro.getString("nombre"),
-							registro.getString("tipoAnimal"), registro.getInt("edad"),
-							registro.getString("descripcionSintomas"), registro.getString("vacunas"), });
+							registro.getInt("id"), 
+							registro.getString("nombre"),
+							registro.getString("apellido"), 
+							registro.getInt("edad"),
+							registro.getString("tipo"), 
+							registro.getString("anime"),
+							registro.getString("fecha_nacimiento"), });
 				}
 			}
 
@@ -154,33 +162,34 @@ public class Consulta extends JPanel {
 
 	public void cargaTablaEspecie() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
 
-			if (cmbTipoAnimal.getSelectedItem().toString().equals("Selecciona una especie")) {
+			if (cmbTipo.getSelectedItem().toString().equals("Selecciona un Tipo")) {
 				modeloTabla.setRowCount(0); // Vacía la tabla
 			} else {
 				Bbdd_Control bd = new Bbdd_Control();
-				ArrayList<Mascotas> arrLMascotas = new ArrayList<>();
-				Mascotas miMascota = new Mascotas();
+				ArrayList<Waifus> arrLWaifus = new ArrayList<>();
+				Waifus miWaifu = new Waifus();
 
 				modeloTabla.setRowCount(0);
 
 				// Guardamos en el atributo tipoAnimal el contenido del JComboBox de TipoAnimal
-				miMascota.setTipoAnimal(cmbTipoAnimal.getSelectedItem().toString());
+				miWaifu.setTipo(cmbTipo.getSelectedItem().toString());
 
 				// Pasamos como parámetro el tipoAnimal y recogemos en arrLMascotas el resultado de la consulta
-				arrLMascotas = bd.consultaMascotasConFiltro(miMascota);
+				arrLWaifus = bd.consultaMascotasConFiltro(miWaifu);
 
 				// Recorremos el arrLMascotas y lo mostramos en el JTable
-				for (Mascotas mascotaActual : arrLMascotas) {
+				for (Waifus mascotaActual : arrLWaifus) {
 					modeloTabla.addRow(new Object[] {
-							mascotaActual.getIdMascota(), 
+							mascotaActual.getId(), 
 							mascotaActual.getNombre(),
-							mascotaActual.getTipoAnimal(), 
+							mascotaActual.getApellido(),
 							mascotaActual.getEdad(),
-							mascotaActual.getDescripcionSintomas(), 
-							mascotaActual.getVacunas() 
+							mascotaActual.getTipo(), 
+							mascotaActual.getAnime(), 
+							mascotaActual.getFecha_nacimiento() 
 					});
 				}
 
@@ -209,13 +218,13 @@ public class Consulta extends JPanel {
 
 	public void cargaComboId() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
-			ResultSet registro = consulta.executeQuery("select idMascota " + "from mascotas");
+			ResultSet registro = consulta.executeQuery("select id " + "from waifus");
 			cmbId.addItem("Selecciona una Id");
 
 			while (registro.next()) {
-				cmbId.addItem(registro.getInt("idMascota"));
+				cmbId.addItem(registro.getInt("id"));
 
 			}
 			conexion.close();
@@ -226,9 +235,9 @@ public class Consulta extends JPanel {
 
 	public void cargaComboNombre() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
-			ResultSet registro = consulta.executeQuery("select nombre " + "from mascotas");
+			ResultSet registro = consulta.executeQuery("select nombre " + "from waifus");
 			cmbNombre.addItem("Selecciona un nombre");
 
 			while (registro.next()) {
@@ -243,13 +252,13 @@ public class Consulta extends JPanel {
 
 	public void cargaComboEspecie() {
 		try {
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
-			ResultSet registro = consulta.executeQuery("select distinct (tipoAnimal) " + "from mascotas");
-			cmbTipoAnimal.addItem("Selecciona una especie");
+			ResultSet registro = consulta.executeQuery("select distinct (tipo) " + "from waifus");
+			cmbTipo.addItem("Selecciona una especie");
 
 			while (registro.next()) {
-				cmbTipoAnimal.addItem(registro.getString("tipoAnimal"));
+				cmbTipo.addItem(registro.getString("tipo"));
 
 			}
 			conexion.close();

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import javax.swing.JSpinner;
 import javax.swing.JButton;
@@ -55,7 +55,7 @@ public class ModificaDatos extends JPanel {
 		cmbId.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				Bbdd_Control bd = new Bbdd_Control();
-				Mascotas m = bd.consultaPorId(cmbId.getSelectedItem().toString());
+				Waifus m = bd.consultaPorId(cmbId.getSelectedItem().toString());
 								
 				txtNom.setText(m.getNombre());
 				txtEspecie.setText(m.getTipoAnimal());
@@ -143,7 +143,7 @@ public class ModificaDatos extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Bbdd_Control bd = new Bbdd_Control();
 				
-				Mascotas m = new Mascotas();
+				Waifus m = new Waifus();
 				m.setIdMascota(Integer.parseInt(cmbId.getSelectedItem().toString()));
 				m.setNombre(txtNom.getText());
 				m.setTipoAnimal(txtEspecie.getText());

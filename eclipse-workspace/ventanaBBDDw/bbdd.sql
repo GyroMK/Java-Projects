@@ -3,12 +3,12 @@ USE WaifuDB;
 
 CREATE TABLE Waifus (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50),
-    edad INT,
-    tipo ENUM("Humano", "Demonio", "Espíritu", "Elfo", "Vampiro", "Híbrido", "Desconocido") NOT NULL,
-    anime VARCHAR(100) NOT NULL,
-    fecha_nacimiento DATE
+    nombre VARCHAR(50) NOT NULL DEFAULT "Desconocido",
+    apellido VARCHAR(50) NOT NULL DEFAULT "Desconocido",
+    edad INT NOT NULL DEFAULT 0000,
+    tipo VARCHAR(20) NOT NULL DEFAULT "Desconocido",
+    anime VARCHAR(100) NOT NULL DEFAULT "Desconocido",
+    fecha_nacimiento VARCHAR(10) NOT NULL DEFAULT "0000-00-00"
 );
 
 INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUES
@@ -28,14 +28,14 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Uzuki", "Hirokawa", 16, "Humano", "Seishun Buta Yarou", "2001-04-04"), ("Aya", "Kamizato", 17, "Humano", "Seishun Buta Yarou", "2000-02-14"),
 
 -- Date a Live (20)
-("Kurumi", "Tokisaki", NULL, "Espíritu", "Date a Live", NULL), ("Tohka", "Yatogami", NULL, "Espíritu", "Date a Live", NULL),
-("Origami", "Tobiichi", 16, "Humano", "Date a Live", "2001-03-03"), ("Yoshino", NULL, NULL, "Espíritu", "Date a Live", NULL),
-("Kotori", "Itsuka", 14, "Híbrido", "Date a Live", "2003-08-03"), ("Miku", "Izayoi", NULL, "Espíritu", "Date a Live", NULL),
-("Natsumi", NULL, NULL, "Espíritu", "Date a Live", NULL), ("Kaguya", "Yamai", NULL, "Espíritu", "Date a Live", NULL),
-("Yuzuru", "Yamai", NULL, "Espíritu", "Date a Live", NULL), ("Mayuri", NULL, NULL, "Espíritu", "Date a Live", NULL),
-("Nia", "Honjou", NULL, "Espíritu", "Date a Live", NULL), ("Reine", "Murasame", NULL, "Desconocido", "Date a Live", NULL),
+("Kurumi", "Tokisaki", NULL, "espiritu", "Date a Live", NULL), ("Tohka", "Yatogami", NULL, "espiritu", "Date a Live", NULL),
+("Origami", "Tobiichi", 16, "Humano", "Date a Live", "2001-03-03"), ("Yoshino", NULL, NULL, "espiritu", "Date a Live", NULL),
+("Kotori", "Itsuka", 14, "Hibrido", "Date a Live", "2003-08-03"), ("Miku", "Izayoi", NULL, "espiritu", "Date a Live", NULL),
+("Natsumi", NULL, NULL, "espiritu", "Date a Live", NULL), ("Kaguya", "Yamai", NULL, "espiritu", "Date a Live", NULL),
+("Yuzuru", "Yamai", NULL, "espiritu", "Date a Live", NULL), ("Mayuri", NULL, NULL, "espiritu", "Date a Live", NULL),
+("Nia", "Honjou", NULL, "espiritu", "Date a Live", NULL), ("Reine", "Murasame", NULL, "Desconocido", "Date a Live", NULL),
 ("Ellen", "Mira Mathers", 30, "Humano", "Date a Live", "1987-06-15"), ("Mana", "Takamiya", 15, "Humano", "Date a Live", "2002-11-20"),
-("Mukuro", "Hoshimiya", NULL, "Espíritu", "Date a Live", NULL), ("Ryouko", "Kusakabe", 25, "Humano", "Date a Live", "1992-05-10"),
+("Mukuro", "Hoshimiya", NULL, "espiritu", "Date a Live", NULL), ("Ryouko", "Kusakabe", 25, "Humano", "Date a Live", "1992-05-10"),
 ("Tamae", "Okamine", 28, "Humano", "Date a Live", "1989-09-09"), ("Ai", "Yamabuki", 16, "Humano", "Date a Live", "2001-04-12"),
 ("Mai", "Hazakura", 16, "Humano", "Date a Live", "2001-04-12"), ("Mii", "Fujibakama", 16, "Humano", "Date a Live", "2001-04-12"),
 
@@ -80,12 +80,12 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 
 -- Re:Zero (15)
 ("Rem", NULL, 19, "Demonio", "Re:Zero", "1998-02-02"), ("Ram", NULL, 19, "Demonio", "Re:Zero", "1998-02-02"),
-("Emilia", NULL, 100, "Elfo", "Re:Zero", NULL), ("Beatrice", NULL, 400, "Espíritu", "Re:Zero", NULL),
+("Emilia", NULL, 100, "Elfo", "Re:Zero", NULL), ("Beatrice", NULL, 400, "espiritu", "Re:Zero", NULL),
 ("Crusch", "Karsten", 20, "Humano", "Re:Zero", "1997-04-04"), ("Priscilla", "Barielle", 19, "Humano", "Re:Zero", "1998-09-07"),
 ("Felt", NULL, 15, "Humano", "Re:Zero", "2002-08-08"), ("Pandora", NULL, NULL, "Desconocido", "Re:Zero", NULL),
-("Minerva", NULL, NULL, "Espíritu", "Re:Zero", NULL), ("Echidna", NULL, NULL, "Espíritu", "Re:Zero", NULL),
-("Daphne", NULL, NULL, "Espíritu", "Re:Zero", NULL), ("Typhon", NULL, NULL, "Espíritu", "Re:Zero", NULL),
-("Carmilla", NULL, NULL, "Espíritu", "Re:Zero", NULL), ("Sekhmet", NULL, NULL, "Espíritu", "Re:Zero", NULL),
+("Minerva", NULL, NULL, "espiritu", "Re:Zero", NULL), ("Echidna", NULL, NULL, "espiritu", "Re:Zero", NULL),
+("Daphne", NULL, NULL, "espiritu", "Re:Zero", NULL), ("Typhon", NULL, NULL, "espiritu", "Re:Zero", NULL),
+("Carmilla", NULL, NULL, "espiritu", "Re:Zero", NULL), ("Sekhmet", NULL, NULL, "espiritu", "Re:Zero", NULL),
 ("Satella", NULL, NULL, "Desconocido", "Re:Zero", NULL),
 
 -- Demon Slayer (15)
@@ -94,8 +94,8 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Tamayo", NULL, 500, "Demonio", "Demon Slayer", NULL), ("Daki", NULL, 100, "Demonio", "Demon Slayer", NULL),
 ("Kanae", "Kocho", 21, "Humano", "Demon Slayer", "1996-04-15"), ("Aoi", "Kanzaki", 16, "Humano", "Demon Slayer", "2001-08-07"),
 ("Sumi", "Nakahara", 10, "Humano", "Demon Slayer", "2007-03-03"), ("Naho", "Takada", 10, "Humano", "Demon Slayer", "2007-05-05"),
-("Kiyo", "Terauchi", 10, "Humano", "Demon Slayer", "2007-04-04"), ("Makomo", NULL, 13, "Espíritu", "Demon Slayer", "2004-06-06"),
-("Sabito", NULL, 13, "Espíritu", "Demon Slayer", "2004-06-06"), ("Susamaru", NULL, NULL, "Demonio", "Demon Slayer", NULL),
+("Kiyo", "Terauchi", 10, "Humano", "Demon Slayer", "2007-04-04"), ("Makomo", NULL, 13, "espiritu", "Demon Slayer", "2004-06-06"),
+("Sabito", NULL, 13, "espiritu", "Demon Slayer", "2004-06-06"), ("Susamaru", NULL, NULL, "Demonio", "Demon Slayer", NULL),
 ("Muzan", "Kibutsuji", NULL, "Demonio", "Demon Slayer", NULL),
 
 -- Attack on Titan (15)
@@ -111,7 +111,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 -- Konosuba (10)
 ("Aqua", NULL, NULL, "Desconocido", "Konosuba", NULL), ("Megumin", NULL, 14, "Humano", "Konosuba", "2010-12-04"),
 ("Darkness", NULL, 19, "Humano", "Konosuba", "1998-04-07"), ("Yunyun", NULL, 14, "Humano", "Konosuba", "2010-11-25"),
-("Wiz", NULL, 20, "Espíritu", "Konosuba", "1997-10-10"), ("Eris", NULL, NULL, "Desconocido", "Konosuba", NULL),
+("Wiz", NULL, 20, "espiritu", "Konosuba", "1997-10-10"), ("Eris", NULL, NULL, "Desconocido", "Konosuba", NULL),
 ("Komekko", NULL, 8, "Humano", "Konosuba", "2016-05-05"), ("Cecily", NULL, 22, "Humano", "Konosuba", "1995-03-15"),
 ("Luna", NULL, 25, "Humano", "Konosuba", "1992-08-20"), ("Arue", NULL, 15, "Humano", "Konosuba", "2002-07-07"),
 
@@ -130,36 +130,36 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 -- Chainsaw Man (15)
 ("Makima", NULL, NULL, "Demonio", "Chainsaw Man", NULL), ("Power", NULL, NULL, "Demonio", "Chainsaw Man", NULL),
 ("Himeno", NULL, 24, "Humano", "Chainsaw Man", "1993-08-29"), ("Kobeni", "Higashiyama", 20, "Humano", "Chainsaw Man", "1997-09-15"),
-("Reze", NULL, NULL, "Híbrido", "Chainsaw Man", NULL), ("Quanxi", NULL, 30, "Humano", "Chainsaw Man", "1987-05-05"),
+("Reze", NULL, NULL, "Hibrido", "Chainsaw Man", NULL), ("Quanxi", NULL, 30, "Humano", "Chainsaw Man", "1987-05-05"),
 ("Fami", NULL, NULL, "Demonio", "Chainsaw Man", NULL), ("Asa", "Mitaka", 16, "Humano", "Chainsaw Man", "2001-09-20"),
-("Nayuta", NULL, NULL, "Demonio", "Chainsaw Man", NULL), ("Cosmo", NULL, NULL, "Híbrido", "Chainsaw Man", NULL),
+("Nayuta", NULL, NULL, "Demonio", "Chainsaw Man", NULL), ("Cosmo", NULL, NULL, "Hibrido", "Chainsaw Man", NULL),
 ("Pingtsi", NULL, 28, "Humano", "Chainsaw Man", "1989-04-04"), ("Long", NULL, 25, "Humano", "Chainsaw Man", "1992-03-03"),
-("Tsugihagi", NULL, NULL, "Híbrido", "Chainsaw Man", NULL), ("Yoru", NULL, NULL, "Demonio", "Chainsaw Man", NULL),
+("Tsugihagi", NULL, NULL, "Hibrido", "Chainsaw Man", NULL), ("Yoru", NULL, NULL, "Demonio", "Chainsaw Man", NULL),
 ("Beam", NULL, NULL, "Demonio", "Chainsaw Man", NULL),
 
 -- Darling in the Franxx (10)
-("Zero Two", NULL, NULL, "Híbrido", "Darling in the Franxx", NULL), ("Ichigo", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"),
+("Zero Two", NULL, NULL, "Hibrido", "Darling in the Franxx", NULL), ("Ichigo", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"),
 ("Miku", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"), ("Kokoro", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"),
 ("Ikuno", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"), ("Nana", NULL, 30, "Humano", "Darling in the Franxx", "1987-07-07"),
-("Naomi", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"), ("Ai", NULL, 5, "Híbrido", "Darling in the Franxx", "2020-05-05"),
+("Naomi", NULL, 16, "Humano", "Darling in the Franxx", "2009-10-15"), ("Ai", NULL, 5, "Hibrido", "Darling in the Franxx", "2020-05-05"),
 ("Papa", NULL, NULL, "Desconocido", "Darling in the Franxx", NULL), ("Tarsier", NULL, NULL, "Desconocido", "Darling in the Franxx", NULL),
 
 -- Spice and Wolf (5)
-("Holo", NULL, 200, "Espíritu", "Spice and Wolf", NULL), ("Nora", "Arendt", 18, "Humano", "Spice and Wolf", "1999-03-12"),
+("Holo", NULL, 200, "espiritu", "Spice and Wolf", NULL), ("Nora", "Arendt", 18, "Humano", "Spice and Wolf", "1999-03-12"),
 ("Eve", "Boland", 25, "Humano", "Spice and Wolf", "1992-07-07"), ("Dian", "Rubens", 30, "Humano", "Spice and Wolf", "1987-06-06"),
 ("Fleur", "Boland", 20, "Humano", "Spice and Wolf", "1997-05-05"),
 
 -- Fate Series (con femboy Astolfo) (20)
-("Saber", NULL, NULL, "Espíritu", "Fate/stay night", NULL), ("Rin", "Tohsaka", 17, "Humano", "Fate/stay night", "2000-02-03"),
-("Sakura", "Matou", 17, "Humano", "Fate/stay night", "2000-03-02"), ("Illya", "von Einzbern", 10, "Híbrido", "Fate/stay night", "2007-11-20"),
-("Astolfo", NULL, NULL, "Espíritu", "Fate/Apocrypha", NULL), ("Jeanne", "d'Arc", NULL, "Espíritu", "Fate/Apocrypha", NULL),
-("Mordred", NULL, NULL, "Espíritu", "Fate/Apocrypha", NULL), ("Semiramis", NULL, NULL, "Espíritu", "Fate/Apocrypha", NULL),
-("Atalanta", NULL, NULL, "Espíritu", "Fate/Apocrypha", NULL), ("Jack", NULL, NULL, "Espíritu", "Fate/Apocrypha", NULL),
-("Tamamo", "no Mae", NULL, "Espíritu", "Fate/Extra", NULL), ("Nero", "Claudius", NULL, "Espíritu", "Fate/Extra", NULL),
-("Okita", "Souji", NULL, "Espíritu", "Fate/Grand Order", NULL), ("Musashi", "Miyamoto", NULL, "Espíritu", "Fate/Grand Order", NULL),
-("Ishtar", NULL, NULL, "Espíritu", "Fate/Grand Order", NULL), ("Ereshkigal", NULL, NULL, "Espíritu", "Fate/Grand Order", NULL),
-("Scathach", NULL, NULL, "Espíritu", "Fate/Grand Order", NULL), ("Artoria", "Lancer", NULL, "Espíritu", "Fate/Grand Order", NULL),
-("Mash", "Kyrielight", 16, "Híbrido", "Fate/Grand Order", "2001-07-07"), ("Kama", NULL, NULL, "Espíritu", "Fate/Grand Order", NULL),
+("Saber", NULL, NULL, "espiritu", "Fate/stay night", NULL), ("Rin", "Tohsaka", 17, "Humano", "Fate/stay night", "2000-02-03"),
+("Sakura", "Matou", 17, "Humano", "Fate/stay night", "2000-03-02"), ("Illya", "von Einzbern", 10, "Hibrido", "Fate/stay night", "2007-11-20"),
+("Astolfo", NULL, NULL, "espiritu", "Fate/Apocrypha", NULL), ("Jeanne", "d'Arc", NULL, "espiritu", "Fate/Apocrypha", NULL),
+("Mordred", NULL, NULL, "espiritu", "Fate/Apocrypha", NULL), ("Semiramis", NULL, NULL, "espiritu", "Fate/Apocrypha", NULL),
+("Atalanta", NULL, NULL, "espiritu", "Fate/Apocrypha", NULL), ("Jack", NULL, NULL, "espiritu", "Fate/Apocrypha", NULL),
+("Tamamo", "no Mae", NULL, "espiritu", "Fate/Extra", NULL), ("Nero", "Claudius", NULL, "espiritu", "Fate/Extra", NULL),
+("Okita", "Souji", NULL, "espiritu", "Fate/Grand Order", NULL), ("Musashi", "Miyamoto", NULL, "espiritu", "Fate/Grand Order", NULL),
+("Ishtar", NULL, NULL, "espiritu", "Fate/Grand Order", NULL), ("Ereshkigal", NULL, NULL, "espiritu", "Fate/Grand Order", NULL),
+("Scathach", NULL, NULL, "espiritu", "Fate/Grand Order", NULL), ("Artoria", "Lancer", NULL, "espiritu", "Fate/Grand Order", NULL),
+("Mash", "Kyrielight", 16, "Hibrido", "Fate/Grand Order", "2001-07-07"), ("Kama", NULL, NULL, "espiritu", "Fate/Grand Order", NULL),
 
 -- Naruto (15)
 ("Hinata", "Hyuga", 16, "Humano", "Naruto", "2001-12-27"), ("Sakura", "Haruno", 16, "Humano", "Naruto", "2001-03-28"),
@@ -184,7 +184,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Pudding", "Charlotte", 16, "Humano", "One Piece", "2001-06-25"), ("Yamato", NULL, 28, "Humano", "One Piece", "1989-11-03"),
 
 -- Evangelion (10)
-("Rei", "Ayanami", 14, "Híbrido", "Neon Genesis Evangelion", "2010-03-30"), ("Asuka", "Langley", 14, "Humano", "Neon Genesis Evangelion", "2010-12-04"),
+("Rei", "Ayanami", 14, "Hibrido", "Neon Genesis Evangelion", "2010-03-30"), ("Asuka", "Langley", 14, "Humano", "Neon Genesis Evangelion", "2010-12-04"),
 ("Misato", "Katsuragi", 29, "Humano", "Neon Genesis Evangelion", "1988-12-08"), ("Mari", "Makinami", 16, "Humano", "Neon Genesis Evangelion", "2001-06-06"),
 ("Ritsuko", "Akagi", 30, "Humano", "Neon Genesis Evangelion", "1987-11-21"), ("Maya", "Ibuki", 24, "Humano", "Neon Genesis Evangelion", "1993-05-11"),
 ("Hikari", "Horaki", 14, "Humano", "Neon Genesis Evangelion", "2010-02-12"), ("Lilith", NULL, NULL, "Desconocido", "Neon Genesis Evangelion", NULL),
@@ -215,14 +215,14 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Fiona", "Frost", 25, "Humano", "Spy x Family", "1992-07-07"),
 
 -- Bleach (15)
-("Rukia", "Kuchiki", 150, "Espíritu", "Bleach", NULL), ("Orihime", "Inoue", 15, "Humano", "Bleach", "2002-09-03"),
-("Yoruichi", "Shihouin", NULL, "Espíritu", "Bleach", NULL), ("Rangiku", "Matsumoto", NULL, "Espíritu", "Bleach", NULL),
-("Nelliel", "Tu Odelschwanck", NULL, "Híbrido", "Bleach", NULL), ("Tatsuki", "Arisawa", 15, "Humano", "Bleach", "2002-07-17"),
-("Hiyori", "Sarugaki", NULL, "Híbrido", "Bleach", NULL), ("Soi", "Fon", NULL, "Espíritu", "Bleach", NULL),
-("Isane", "Kotetsu", NULL, "Espíritu", "Bleach", NULL), ("Nemu", "Kurotsuchi", NULL, "Híbrido", "Bleach", NULL),
-("Lisa", "Yadoumaru", NULL, "Híbrido", "Bleach", NULL), ("Mashiro", "Kuna", NULL, "Híbrido", "Bleach", NULL),
-("Harribel", "Tia", NULL, "Híbrido", "Bleach", NULL), ("Senjumaru", "Shutara", NULL, "Espíritu", "Bleach", NULL),
-("Unohana", "Retsu", NULL, "Espíritu", "Bleach", NULL),
+("Rukia", "Kuchiki", 150, "espiritu", "Bleach", NULL), ("Orihime", "Inoue", 15, "Humano", "Bleach", "2002-09-03"),
+("Yoruichi", "Shihouin", NULL, "espiritu", "Bleach", NULL), ("Rangiku", "Matsumoto", NULL, "espiritu", "Bleach", NULL),
+("Nelliel", "Tu Odelschwanck", NULL, "Hibrido", "Bleach", NULL), ("Tatsuki", "Arisawa", 15, "Humano", "Bleach", "2002-07-17"),
+("Hiyori", "Sarugaki", NULL, "Hibrido", "Bleach", NULL), ("Soi", "Fon", NULL, "espiritu", "Bleach", NULL),
+("Isane", "Kotetsu", NULL, "espiritu", "Bleach", NULL), ("Nemu", "Kurotsuchi", NULL, "Hibrido", "Bleach", NULL),
+("Lisa", "Yadoumaru", NULL, "Hibrido", "Bleach", NULL), ("Mashiro", "Kuna", NULL, "Hibrido", "Bleach", NULL),
+("Harribel", "Tia", NULL, "Hibrido", "Bleach", NULL), ("Senjumaru", "Shutara", NULL, "espiritu", "Bleach", NULL),
+("Unohana", "Retsu", NULL, "espiritu", "Bleach", NULL),
 
 -- Hunter x Hunter (10)
 ("Bisky", "Krueger", 57, "Humano", "Hunter x Hunter", "1960-02-02"), ("Kurapika", NULL, 19, "Humano", "Hunter x Hunter", "1998-04-04"),
@@ -234,7 +234,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 -- JoJo's Bizarre Adventure (10)
 ("Jolyne", "Cujoh", 19, "Humano", "JoJo's Bizarre Adventure", "1998-03-03"), ("Trish", "Una", 15, "Humano", "JoJo's Bizarre Adventure", "2002-06-06"),
 ("Lisa", "Lisa", NULL, "Humano", "JoJo's Bizarre Adventure", NULL), ("Erina", "Pendleton", 20, "Humano", "JoJo's Bizarre Adventure", "1897-03-03"),
-("Suzi", "Q", 20, "Humano", "JoJo's Bizarre Adventure", "1917-05-05"), ("Foo", "Fighters", NULL, "Híbrido", "JoJo's Bizarre Adventure", NULL),
+("Suzi", "Q", 20, "Humano", "JoJo's Bizarre Adventure", "1917-05-05"), ("Foo", "Fighters", NULL, "Hibrido", "JoJo's Bizarre Adventure", NULL),
 ("Hermes", "Costello", 23, "Humano", "JoJo's Bizarre Adventure", "1994-04-04"), ("Yasuho", "Hirose", 19, "Humano", "JoJo's Bizarre Adventure", "1998-08-08"),
 ("Lucy", "Steel", 14, "Humano", "JoJo's Bizarre Adventure", "1897-07-07"), ("Miuccia", "Miuller", 22, "Humano", "JoJo's Bizarre Adventure", "1995-06-06"),
 
@@ -245,10 +245,10 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Fischl", NULL, 16, "Humano", "Genshin Impact", "2001-05-27"), ("Mona", NULL, 19, "Humano", "Genshin Impact", "1998-08-31"),
 ("Keqing", NULL, 20, "Humano", "Genshin Impact", "1997-11-20"), ("Ningguang", NULL, 25, "Humano", "Genshin Impact", "1992-08-26"),
 ("Beidou", NULL, 27, "Humano", "Genshin Impact", "1990-02-14"), ("Xinyan", NULL, 16, "Humano", "Genshin Impact", "2001-10-16"),
-("Hu Tao", NULL, 19, "Humano", "Genshin Impact", "1998-07-15"), ("Ganyu", NULL, 3000, "Híbrido", "Genshin Impact", NULL),
+("Hu Tao", NULL, 19, "Humano", "Genshin Impact", "1998-07-15"), ("Ganyu", NULL, 3000, "Hibrido", "Genshin Impact", NULL),
 ("Shenhe", NULL, 25, "Humano", "Genshin Impact", "1992-03-10"), ("Yelan", NULL, 24, "Humano", "Genshin Impact", "1993-04-20"),
-("Kuki", "Shinobu", 20, "Humano", "Genshin Impact", "1997-05-27"), ("Ei", NULL, NULL, "Espíritu", "Genshin Impact", NULL),
-("Yae", "Miko", NULL, "Espíritu", "Genshin Impact", NULL), ("Kamisato", "Ayaka", 18, "Humano", "Genshin Impact", "1999-09-28"),
+("Kuki", "Shinobu", 20, "Humano", "Genshin Impact", "1997-05-27"), ("Ei", NULL, NULL, "espiritu", "Genshin Impact", NULL),
+("Yae", "Miko", NULL, "espiritu", "Genshin Impact", NULL), ("Kamisato", "Ayaka", 18, "Humano", "Genshin Impact", "1999-09-28"),
 
 -- Kaguya-sama: Love is War (10)
 ("Kaguya", "Shinomiya", 17, "Humano", "Kaguya-sama: Love is War", "2000-01-01"), ("Chika", "Fujiwara", 16, "Humano", "Kaguya-sama: Love is War", "2001-03-03"),
@@ -265,7 +265,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Yuki", "Tsukumo", 30, "Humano", "Jujutsu Kaisen", "1987-08-08"), ("Riko", "Amanai", 14, "Humano", "Jujutsu Kaisen", "2003-03-03"),
 ("Misato", "Kuroi", 25, "Humano", "Jujutsu Kaisen", "1992-04-04"), ("Akari", "Nitta", 23, "Humano", "Jujutsu Kaisen", "1994-05-05"),
 ("Noritoshi", "Kamo", 18, "Humano", "Jujutsu Kaisen", "1999-07-07"), ("Takada", NULL, 22, "Humano", "Jujutsu Kaisen", "1995-06-06"),
-("Panda", NULL, NULL, "Híbrido", "Jujutsu Kaisen", NULL),
+("Panda", NULL, NULL, "Hibrido", "Jujutsu Kaisen", NULL),
 
 -- The Idolmaster (10)
 ("Haruka", "Amami", 17, "Humano", "The Idolmaster", "2000-04-03"), ("Chihaya", "Kisaragi", 16, "Humano", "The Idolmaster", "2001-02-25"),
@@ -327,7 +327,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 
 -- Fullmetal Alchemist (10)
 ("Winry", "Rockbell", 16, "Humano", "Fullmetal Alchemist", "2001-03-03"), ("Riza", "Hawkeye", 25, "Humano", "Fullmetal Alchemist", "1992-04-04"),
-("Izumi", "Curtis", 35, "Humano", "Fullmetal Alchemist", "1982-05-05"), ("Lust", NULL, NULL, "Híbrido", "Fullmetal Alchemist", NULL),
+("Izumi", "Curtis", 35, "Humano", "Fullmetal Alchemist", "1982-05-05"), ("Lust", NULL, NULL, "Hibrido", "Fullmetal Alchemist", NULL),
 ("Lan Fan", NULL, 16, "Humano", "Fullmetal Alchemist", "2001-06-06"), ("Mei", "Chang", 10, "Humano", "Fullmetal Alchemist", "2007-07-07"),
 ("Olivier", "Armstrong", 37, "Humano", "Fullmetal Alchemist", "1980-08-08"), ("Trisha", "Elric", 26, "Humano", "Fullmetal Alchemist", "1991-09-09"),
 ("Rose", "Thomas", 18, "Humano", "Fullmetal Alchemist", "1999-10-10"), ("Maria", "Ross", 23, "Humano", "Fullmetal Alchemist", "1994-11-11"),
@@ -347,7 +347,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 ("Sanae", "Furukawa", 35, "Humano", "Clannad", "1982-09-09"), ("Mei", "Sunohara", 14, "Humano", "Clannad", "2003-10-10"),
 
 -- Anohana (5)
-("Menma", NULL, 15, "Espíritu", "Anohana", "2002-03-03"), ("Anaru", "Anjo", 16, "Humano", "Anohana", "2001-04-04"),
+("Menma", NULL, 15, "espiritu", "Anohana", "2002-03-03"), ("Anaru", "Anjo", 16, "Humano", "Anohana", "2001-04-04"),
 ("Yukiatsu", "Matsuyuki", 16, "Humano", "Anohana", "2001-05-05"), ("Tsuruko", "Tsukioka", 16, "Humano", "Anohana", "2001-06-06"),
 ("Poppo", "Hisakawa", 16, "Humano", "Anohana", "2001-07-07"),
 
@@ -359,7 +359,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 -- Puella Magi Madoka Magica (10)
 ("Madoka", "Kaname", 14, "Humano", "Puella Magi Madoka Magica", "2003-10-03"), ("Homura", "Akemi", 14, "Humano", "Puella Magi Madoka Magica", "2003-05-05"),
 ("Sayaka", "Miki", 14, "Humano", "Puella Magi Madoka Magica", "2003-06-06"), ("Mami", "Tomoe", 15, "Humano", "Puella Magi Madoka Magica", "2002-07-07"),
-("Kyoko", "Sakura", 14, "Humano", "Puella Magi Madoka Magica", "2003-08-08"), ("Nagisa", "Momoe", 10, "Híbrido", "Puella Magi Madoka Magica", "2007-09-09"),
+("Kyoko", "Sakura", 14, "Humano", "Puella Magi Madoka Magica", "2003-08-08"), ("Nagisa", "Momoe", 10, "Hibrido", "Puella Magi Madoka Magica", "2007-09-09"),
 ("Kyubey", NULL, NULL, "Desconocido", "Puella Magi Madoka Magica", NULL), ("Hitomi", "Shizuki", 14, "Humano", "Puella Magi Madoka Magica", "2003-03-03"),
 ("Junko", "Kaname", 35, "Humano", "Puella Magi Madoka Magica", "1982-04-04"), ("Tatsuya", "Kaname", 3, "Humano", "Puella Magi Madoka Magica", "2014-05-05"),
 
@@ -389,7 +389,7 @@ INSERT INTO Waifus (nombre, apellido, edad, tipo, anime, fecha_nacimiento) VALUE
 
 -- Kill la Kill (5)
 ("Ryuko", "Matoi", 17, "Humano", "Kill la Kill", "2000-10-03"), ("Satsuki", "Kiryuin", 18, "Humano", "Kill la Kill", "1999-11-11"),
-("Mako", "Mankanshoku", 17, "Humano", "Kill la Kill", "2000-12-12"), ("Nui", "Harime", NULL, "Híbrido", "Kill la Kill", NULL),
+("Mako", "Mankanshoku", 17, "Humano", "Kill la Kill", "2000-12-12"), ("Nui", "Harime", NULL, "Hibrido", "Kill la Kill", NULL),
 ("Ragyo", "Kiryuin", 40, "Humano", "Kill la Kill", "1977-03-03"),
 
 -- Neon Genesis Evangelion (extras para completar)

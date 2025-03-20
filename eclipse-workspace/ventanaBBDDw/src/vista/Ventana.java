@@ -38,7 +38,7 @@ public class Ventana extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana() {
-		setTitle("Veterinario");
+		setTitle("Waifus");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1028, 669);
 		
@@ -62,7 +62,6 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				BorraDatos borraDatos = new BorraDatos();
 				borraDatos.cargaCombo();
-				borraDatos.cargaComboClase();
 				cambiaPanel(borraDatos);
 			}
 		});

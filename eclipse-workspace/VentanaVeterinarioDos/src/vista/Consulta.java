@@ -5,7 +5,7 @@ import javax.swing.JToolBar;
 import javax.swing.table.DefaultTableModel;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -161,8 +161,8 @@ public class Consulta extends JPanel {
 				modeloTabla.setRowCount(0); // Vacía la tabla
 			} else {
 				Bbdd_Control bd = new Bbdd_Control();
-				ArrayList<Mascotas> arrLMascotas = new ArrayList<>();
-				Mascotas miMascota = new Mascotas();
+				ArrayList<Waifus> arrLMascotas = new ArrayList<>();
+				Waifus miMascota = new Waifus();
 
 				modeloTabla.setRowCount(0);
 
@@ -173,7 +173,7 @@ public class Consulta extends JPanel {
 				arrLMascotas = bd.consultaMascotasConFiltro(miMascota);
 
 				// Recorremos el arrLMascotas y lo mostramos en el JTable
-				for (Mascotas mascotaActual : arrLMascotas) {
+				for (Waifus mascotaActual : arrLMascotas) {
 					modeloTabla.addRow(new Object[] {
 							mascotaActual.getIdMascota(), 
 							mascotaActual.getNombre(),

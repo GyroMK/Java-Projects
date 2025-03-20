@@ -5,7 +5,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import java.awt.Font;
 import java.sql.Connection;
@@ -33,7 +33,7 @@ import java.awt.event.ItemEvent;
 public class BorraDatos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JComboBox<Mascotas> cmbId;
+	private JComboBox<Waifus> cmbId;
 	private JTextField txtBorrarMascota;
 	private JTextField txtNombre;
 	private JTextField txtTipo;
@@ -68,7 +68,7 @@ public class BorraDatos extends JPanel {
 		cmbId = new JComboBox<>();
 		cmbId.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				Mascotas m = (Mascotas) cmbId.getSelectedItem();
+				Waifus m = (Waifus) cmbId.getSelectedItem();
 				txtNombre.setText(m.getNombre());
 				txtTipo.setText(m.getTipoAnimal());
 				txtEdad.setText(m.getEdad() + "");
@@ -82,8 +82,8 @@ public class BorraDatos extends JPanel {
 					boolean cellHasFocus) {
 				super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 				String cadena = null;
-				if (value instanceof Mascotas) {
-					Mascotas m = (Mascotas) value;
+				if (value instanceof Waifus) {
+					Waifus m = (Waifus) value;
 					cadena = m.getIdMascota() + ", " + m.getTipoAnimal() + ", " + m.getNombre();
 					setText(cadena);
 				}
@@ -229,7 +229,7 @@ public class BorraDatos extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// Llamamos al método borrar de la clase Bbdd_Control con el id del JComboBox
 				Bbdd_Control bdc = new Bbdd_Control();
-				Mascotas m = new Mascotas();
+				Waifus m = new Waifus();
 
 				// Seleccionamos únicamente el id del combo
 				String id = cmbClase.getSelectedItem().toString();
@@ -263,10 +263,10 @@ public class BorraDatos extends JPanel {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
 			Statement consulta = conexion.createStatement();
 			ResultSet registro = consulta.executeQuery("select * from mascotas");
-			Mascotas m = null;
+			Waifus m = null;
 
 			while (registro.next()) {
-				m = new Mascotas();
+				m = new Waifus();
 				m.setIdMascota(registro.getInt("idMascota"));
 				m.setTipoAnimal(registro.getString("tipoAnimal"));
 				m.setNombre(registro.getString("nombre"));

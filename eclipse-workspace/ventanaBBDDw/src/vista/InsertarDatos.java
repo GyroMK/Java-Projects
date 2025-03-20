@@ -10,7 +10,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -23,9 +23,10 @@ public class InsertarDatos extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField txtNombre;
-	private JTextField txtTipoanimal;
-	private JTextField txtSintomas;
-	private JTextField txtVacunas;
+	private JTextField txtTipo;
+	private JTextField txtAnime;
+	private JTextField txtFecha;
+	private JTextField txtApellido;
 
 	/**
 	 * Create the panel.
@@ -47,24 +48,24 @@ public class InsertarDatos extends JPanel {
 		txtNombre.setBounds(126, 111, 252, 23);
 		add(txtNombre);
 		
-		txtTipoanimal = new JTextField();
-		txtTipoanimal.setColumns(10);
-		txtTipoanimal.setBounds(222, 175, 384, 25);
-		add(txtTipoanimal);
+		txtTipo = new JTextField();
+		txtTipo.setColumns(10);
+		txtTipo.setBounds(104, 214, 384, 25);
+		add(txtTipo);
 		
 		JSpinner spinnerEdad = new JSpinner();
-		spinnerEdad.setBounds(110, 224, 52, 23);
+		spinnerEdad.setBounds(113, 263, 52, 23);
 		add(spinnerEdad);
 		
-		txtSintomas = new JTextField();
-		txtSintomas.setColumns(10);
-		txtSintomas.setBounds(156, 277, 653, 25);
-		add(txtSintomas);
+		txtAnime = new JTextField();
+		txtAnime.setColumns(10);
+		txtAnime.setBounds(126, 321, 653, 25);
+		add(txtAnime);
 		
-		txtVacunas = new JTextField();
-		txtVacunas.setColumns(10);
-		txtVacunas.setBounds(171, 343, 638, 25);
-		add(txtVacunas);
+		txtFecha = new JTextField();
+		txtFecha.setColumns(10);
+		txtFecha.setBounds(228, 387, 638, 25);
+		add(txtFecha);
 		
 		JTextArea txtrId = new JTextArea();
 		txtrId.setFont(new Font("Monospaced", Font.BOLD, 18));
@@ -80,47 +81,48 @@ public class InsertarDatos extends JPanel {
 		txtrNombre.setBounds(39, 111, 77, 25);
 		add(txtrNombre);
 		
-		JTextArea txtrTipoDeAnimal = new JTextArea();
-		txtrTipoDeAnimal.setText("Tipo de animal:");
-		txtrTipoDeAnimal.setFont(new Font("Monospaced", Font.BOLD, 18));
-		txtrTipoDeAnimal.setBackground(new Color(255, 255, 255));
-		txtrTipoDeAnimal.setBounds(39, 170, 173, 25);
-		add(txtrTipoDeAnimal);
+		JTextArea txtrTipo = new JTextArea();
+		txtrTipo.setText("Tipo:");
+		txtrTipo.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrTipo.setBackground(new Color(255, 255, 255));
+		txtrTipo.setBounds(39, 209, 55, 25);
+		add(txtrTipo);
 		
 		JTextArea txtrEdad = new JTextArea();
 		txtrEdad.setText("Edad:");
 		txtrEdad.setFont(new Font("Monospaced", Font.BOLD, 18));
 		txtrEdad.setBackground(new Color(255, 255, 255));
-		txtrEdad.setBounds(39, 222, 61, 25);
+		txtrEdad.setBounds(42, 261, 61, 25);
 		add(txtrEdad);
 		
-		JTextArea txtrSntomas = new JTextArea();
-		txtrSntomas.setText("Síntomas:");
-		txtrSntomas.setFont(new Font("Monospaced", Font.BOLD, 18));
-		txtrSntomas.setBackground(new Color(255, 255, 255));
-		txtrSntomas.setBounds(39, 277, 105, 25);
-		add(txtrSntomas);
+		JTextArea txtrAnime = new JTextArea();
+		txtrAnime.setText("Anime:");
+		txtrAnime.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrAnime.setBackground(new Color(255, 255, 255));
+		txtrAnime.setBounds(42, 316, 77, 25);
+		add(txtrAnime);
 		
-		JTextArea txtrVacunas = new JTextArea();
-		txtrVacunas.setText("Vacunas:");
-		txtrVacunas.setFont(new Font("Monospaced", Font.BOLD, 18));
-		txtrVacunas.setBackground(new Color(255, 255, 255));
-		txtrVacunas.setBounds(39, 343, 105, 25);
-		add(txtrVacunas);
+		JTextArea txtrFecha = new JTextArea();
+		txtrFecha.setText("Fecha de Nacimiento:");
+		txtrFecha.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrFecha.setBackground(new Color(255, 255, 255));
+		txtrFecha.setBounds(0, 382, 218, 25);
+		add(txtrFecha);
 		
 		JButton btnInsertar = new JButton("INSERTAR");
 		btnInsertar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Mascotas m = new Mascotas();
+				Waifus m = new Waifus();
 				m.setNombre(txtNombre.getText());
-				m.setTipoAnimal(txtTipoanimal.getText());
+				m.setApellido(txtApellido.getText());
+				m.setTipo(txtTipo.getText());
 				m.setEdad(Integer.parseInt(spinnerEdad.getValue().toString()));
-				m.setDescripcionSintomas(txtSintomas.getText());
-				m.setVacunas(txtVacunas.getText());
+				m.setAnime(txtAnime.getText());
+				m.setFecha_nacimiento(txtFecha.getText());
 				
 				mibbdd.insertaDatos(m);
-				JOptionPane.showMessageDialog(null, "Mascota creada correctamente");
+				JOptionPane.showMessageDialog(null, "Waifu creada correctamente");
 				
 			}
 		});
@@ -135,6 +137,18 @@ public class InsertarDatos extends JPanel {
 		txtrInsertarMascota.setText("Insertar Mascota");
 		txtrInsertarMascota.setBounds(535, 24, 277, 51);
 		add(txtrInsertarMascota);
+		
+		JTextArea txtrApellido = new JTextArea();
+		txtrApellido.setText("Apellido:");
+		txtrApellido.setFont(new Font("Monospaced", Font.BOLD, 18));
+		txtrApellido.setBackground(Color.WHITE);
+		txtrApellido.setBounds(39, 162, 106, 25);
+		add(txtrApellido);
+		
+		txtApellido = new JTextField();
+		txtApellido.setColumns(10);
+		txtApellido.setBounds(155, 164, 252, 23);
+		add(txtApellido);
 
 	}
 }

@@ -10,7 +10,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 
 import controlador.Bbdd_Control;
-import modelo.Mascotas;
+import modelo.Waifus;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -112,7 +112,7 @@ public class InsertarDatos extends JPanel {
 		btnInsertar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Mascotas m = new Mascotas();
+				Waifus m = new Waifus();
 				m.setNombre(txtNombre.getText());
 				m.setTipoAnimal(txtTipoanimal.getText());
 				m.setEdad(Integer.parseInt(spinnerEdad.getValue().toString()));

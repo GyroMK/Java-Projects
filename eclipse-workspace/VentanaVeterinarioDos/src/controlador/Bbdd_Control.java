@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.Mascotas;
+import modelo.Waifus;
 
 /**
  *
@@ -15,7 +15,7 @@ import modelo.Mascotas;
  */
 public class Bbdd_Control {
 
-	public void insertaDatos(Mascotas m) {
+	public void insertaDatos(Waifus m) {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
 			Statement consulta = conexion.createStatement();
@@ -30,8 +30,8 @@ public class Bbdd_Control {
 		}
 	}
 
-    public Mascotas consultaPorId(String id) {
-    	Mascotas mascotaActual = new Mascotas();
+    public Waifus consultaPorId(String id) {
+    	Waifus mascotaActual = new Waifus();
     	
         try {
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
@@ -56,8 +56,8 @@ public class Bbdd_Control {
         return null;
     }
 
-    public ArrayList<Mascotas> consultaMascotasConFiltro(Mascotas m) {
-        ArrayList<Mascotas> arrlMascotas = new ArrayList<>();
+    public ArrayList<Waifus> consultaMascotasConFiltro(Waifus m) {
+        ArrayList<Waifus> arrlMascotas = new ArrayList<>();
         ResultSet registro = null;
 
         try {
@@ -77,9 +77,9 @@ public class Bbdd_Control {
                         + m.getTipoAnimal() + "'");
             }
 
-            Mascotas mimascota = null;
+            Waifus mimascota = null;
             while (registro.next()) {
-                mimascota = new Mascotas();
+                mimascota = new Waifus();
                 mimascota.setIdMascota(Integer.parseInt(registro.getString("idMascota")));
                 mimascota.setNombre(registro.getString("nombre"));
                 mimascota.setTipoAnimal(registro.getString("tipoAnimal"));
@@ -98,7 +98,7 @@ public class Bbdd_Control {
         return arrlMascotas;
     }
 
-    public void modificaDatos(Mascotas m) {
+    public void modificaDatos(Waifus m) {
         Connection conexion;
         try {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_veterinario", "root", "");
@@ -120,7 +120,7 @@ public class Bbdd_Control {
         }
     }
 
-	public int borraDatos(Mascotas m) {
+	public int borraDatos(Waifus m) {
 		int valor = 0;
 		Connection conexion;
 
