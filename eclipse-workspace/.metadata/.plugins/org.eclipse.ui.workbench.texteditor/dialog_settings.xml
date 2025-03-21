@@ -5,11 +5,13 @@
 		<item key="selection" value=""/>
 		<item key="replaceBarOpen" value="true"/>
 		<list key="findhistory">
+			<item value="get"/>
 			<item value="cmbNombre"/>
 			<item value="fuu"/>
 			<item value="Lbl"/>
 		</list>
 		<list key="replacehistory">
+			<item value="set"/>
 			<item value="cmbAnime"/>
 			<item value="meta"/>
 			<item value="lbl"/>

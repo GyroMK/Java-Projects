@@ -54,11 +54,11 @@ public class Ejer1 extends JPanel {
 
        
 
-		ej1 Ichika = new ej1("Ichika", Lblichi, Lblmeta);
-		ej1 Nino = new ej1("Nino", Lblnino, Lblmeta);
-		ej1 Miku = new ej1("Miku", LblMiku, Lblmeta);
-		ej1 Yotsuba = new ej1("Yotsuba", LblYotsu, Lblmeta);
-		ej1 Itsuki = new ej1("Itsuki", LblItsu, Lblmeta);
+		carrera_Control Ichika = new carrera_Control("Ichika", Lblichi, Lblmeta);
+		carrera_Control Nino = new carrera_Control("Nino", Lblnino, Lblmeta);
+		carrera_Control Miku = new carrera_Control("Miku", LblMiku, Lblmeta);
+		carrera_Control Yotsuba = new carrera_Control("Yotsuba", LblYotsu, Lblmeta);
+		carrera_Control Itsuki = new carrera_Control("Itsuki", LblItsu, Lblmeta);
 		
 				
 		Ichika.start();

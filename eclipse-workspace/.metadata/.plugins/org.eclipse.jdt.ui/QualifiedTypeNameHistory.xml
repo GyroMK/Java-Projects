@@ -13,4 +13,9 @@
     <fullyQualifiedTypeName name="javax.swing.JDialog"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="modelo.Waifus"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="controlador.ej1"/>
+    <fullyQualifiedTypeName name="vista.carrera"/>
+    <fullyQualifiedTypeName name="controlador.carrera_Control"/>
+    <fullyQualifiedTypeName name="modelo.Personajes"/>
 </qualifiedTypeNameHistroy>
