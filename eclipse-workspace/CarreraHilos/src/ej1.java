@@ -18,7 +18,6 @@ public class ej1 extends Thread {
 
 	public void correr() {
 		System.out.println(nombre + " comienza la carrera de 100 m.");
-		boolean terminado = false;
 		while (lbl.getX() < lblmeta.getX()) {
 			System.out.println(nombre + " pasa por los " + lbl.getX() + 10 + "m.");
 			lbl.setLocation(lbl.getX() + 10, lbl.getY());
@@ -27,10 +26,6 @@ public class ej1 extends Thread {
 			} catch (InterruptedException e) {
 			}
 			
-			if (terminado == false && lbl.getX() >= lblmeta.getX()) {
-				JOptionPane.showMessageDialog(null, nombre + " gano");
-				terminado = true;
-			}
 		}
 		System.out.println("--------------------------------------------------");
 		System.out.println(nombre + " llega a la META. Hilo: " + this.getName());

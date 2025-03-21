@@ -14,12 +14,12 @@ public class Ejemplo03 {
 			//String[] listado = {"Notepad.exe", "notas.txt"};
 			//Runtime.getRuntime().exec(listado);
 			
-			String[] listado = {"Notepad.exe", "notas.txt"};
+			String[] listado = {"\"C:\\Users\\fri11\\AppData\\Local\\Programs\\Opera GX\\opera.exe\"", "https://www.skidrowreloaded.com"};
 			Process procesos = Runtime.getRuntime().exec(listado);
 			
-			// waitFor - Detiene la ejecución del programa que lanza el proceso a la espera de que este último termine
+			// waitFor - Detiene la ejecuciï¿½n del programa que lanza el proceso a la espera de que este ï¿½ltimo termine
 			int idProceso = procesos.waitFor();
-			System.out.println("Fin de la ejecución: " + idProceso);
+			System.out.println("Fin de la ejecuciï¿½n: " + idProceso);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

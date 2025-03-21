@@ -42,6 +42,7 @@ public class BorraDatos extends JPanel {
 	private JTextField txtAnime;
 	private JTextField txtFecha;
 	private JTextField txtApellido;
+	private boolean isUpdatingCombo = false;
 
 	/**
 	 * Create the panel.
@@ -62,17 +63,28 @@ public class BorraDatos extends JPanel {
 		txtBorrarMascota.setColumns(10);
 
 		cmbId = new JComboBox<>();
-		cmbId.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				Waifus m = (Waifus) cmbId.getSelectedItem();
-				txtNombre.setText(m.getNombre());
-				txtApellido.setText(m.getApellido());
-				txtTipo.setText(m.getTipo());
-				txtEdad.setText(m.getEdad() + "");
-				txtAnime.setText(m.getAnime());
-				txtFecha.setText(m.getFecha_nacimiento());
-			}
-		});
+        cmbId.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (!isUpdatingCombo && e.getStateChange() == ItemEvent.SELECTED) {
+                    Waifus m = (Waifus) cmbId.getSelectedItem();
+                    if (m != null) {
+                        txtNombre.setText(m.getNombre());
+                        txtApellido.setText(m.getApellido());
+                        txtTipo.setText(m.getTipo());
+                        txtEdad.setText(m.getEdad() + "");
+                        txtAnime.setText(m.getAnime());
+                        txtFecha.setText(m.getFecha_nacimiento());
+                    } else {
+                        txtNombre.setText("");
+                        txtApellido.setText("");
+                        txtTipo.setText("");
+                        txtEdad.setText("");
+                        txtAnime.setText("");
+                        txtFecha.setText("");
+                    }
+                }
+            }
+        });
 		cmbId.setRenderer(new DefaultListCellRenderer() {
 			@Override
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
@@ -90,39 +102,60 @@ public class BorraDatos extends JPanel {
 		cmbId.setBounds(270, 95, 169, 21);
 		add(cmbId);
 
-		JLabel lblId = new JLabel("Id de la Mascota (Fran, cargando objeto)");
+		JLabel lblId = new JLabel("Id de la Mascota ");
+		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblId.setBounds(28, 95, 232, 14);
 		add(lblId);
 
+		// In the constructor, modify the button ActionListener
 		JButton btnBorrar = new JButton("Borrar");
-		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Llamamos al método borrar de la clase Bbdd_Control con el id del JComboBox
-				Bbdd_Control bdc = new Bbdd_Control();
-				Waifus m = new Waifus();
+        btnBorrar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Object selectedItem = cmbId.getSelectedItem();
+                if (selectedItem instanceof Waifus) {
+                    Waifus selectedWaifu = (Waifus) selectedItem;
+                    int id = selectedWaifu.getId();
+                    System.out.println("ID seleccionado: " + id);
 
-				// Seleccionamos únicamente el id del combo
-				String id = cmbId.getSelectedItem().toString();
-				id = id.substring(0, id.indexOf(","));
+                    int valor = JOptionPane.showConfirmDialog(null, "¿Borrar mascota?");
+                    if (valor == JOptionPane.OK_OPTION) {
+                        Bbdd_Control bdc = new Bbdd_Control();
+                        bdc.borraDatos(selectedWaifu);
 
-				m.setId(Integer.parseInt(id));
-				int valor = JOptionPane.showConfirmDialog(null, "Borrar mascota");
-				if (valor == JOptionPane.OK_OPTION) {
-					bdc.borraDatos(m);
+                        isUpdatingCombo = true;
+                        cmbId.removeAllItems();
+                        cargaCombo();
+                        isUpdatingCombo = false;
 
-					// Una vez borrada la mascota vaciamos los JTextField
-					txtNombre.setText("");
-					txtApellido.setText("");
-					txtTipo.setText("");
-					txtEdad.setText("");
-					txtAnime.setText("");
-					txtFecha.setText("");
+                        txtNombre.setText("");
+                        txtApellido.setText("");
+                        txtTipo.setText("");
+                        txtEdad.setText("");
+                        txtAnime.setText("");
+                        txtFecha.setText("");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, seleccione una mascota para borrar.");
+                }
+            }
+        });
 
-					// Volvemos a cargar el combo
-					cmbId.removeAllItems();
-					cargaCombo();
-				}
-			}
+		// Modify the ItemListener to handle null cases
+		cmbId.addItemListener(new ItemListener() {
+		    public void itemStateChanged(ItemEvent e) {
+		        if (e.getStateChange() == ItemEvent.SELECTED) {
+		            Object selected = cmbId.getSelectedItem();
+		            if (selected instanceof Waifus) {
+		                Waifus m = (Waifus) selected;
+		                txtNombre.setText(m.getNombre() != null ? m.getNombre() : "");
+		                txtApellido.setText(m.getApellido() != null ? m.getApellido() : "");
+		                txtTipo.setText(m.getTipo() != null ? m.getTipo() : "");
+		                txtEdad.setText(String.valueOf(m.getEdad()));
+		                txtAnime.setText(m.getAnime() != null ? m.getAnime() : "");
+		                txtFecha.setText(m.getFecha_nacimiento() != null ? m.getFecha_nacimiento() : "");
+		            }
+		        }
+		    }
 		});
 		btnBorrar.setBounds(187, 317, 89, 23);
 		add(btnBorrar);

@@ -36,15 +36,16 @@ public class Bbdd_Control {
         try {
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
             Statement consulta = conexion.createStatement();
-            ResultSet registro = consulta.executeQuery("select * from mascotas where idMascota=" + id);
+            ResultSet registro = consulta.executeQuery("select * from waifus where id=" + id);
 
             if (registro.next()) {
-                mascotaActual.setIdMascota(registro.getInt("idMascota"));
+                mascotaActual.setId(registro.getInt("id"));
                 mascotaActual.setNombre(registro.getString("nombre"));
-                mascotaActual.setDescripcionSintomas(registro.getString("descripcionSintomas"));
+                mascotaActual.setApellido(registro.getString("apellido"));
+                mascotaActual.setAnime(registro.getString("anime"));
                 mascotaActual.setEdad(registro.getInt("edad"));
-                mascotaActual.setTipoAnimal(registro.getString("tipoAnimal"));
-                mascotaActual.setVacunas(registro.getString("vacunas"));
+                mascotaActual.setTipo(registro.getString("tipo"));
+                mascotaActual.setFecha_nacimiento(registro.getString("fecha_nacimiento"));
             }
             conexion.close();
             
@@ -105,10 +106,10 @@ public class Bbdd_Control {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
             Statement consulta = conexion.createStatement();
             
-            int valor = consulta.executeUpdate("update mascotas set nombre='"
-                    + m.getNombre() + "', tipoAnimal='" + m.getTipoAnimal() + "', edad=" + m.getEdad() 
-                    + ",descripcionSintomas='" + m.getDescripcionSintomas() + "', vacunas='" + m.getVacunas() 
-                    + "' where idMascota=" + m.getIdMascota());
+            int valor = consulta.executeUpdate("update waifus set nombre='"
+                    + m.getNombre() + "', apellido='"+m.getApellido()+"', tipo='" + m.getTipo() + "', edad=" + m.getEdad() 
+                    + ", anime='" + m.getAnime() + "', fecha_nacimiento='" + m.getFecha_nacimiento() 
+                    + "' where id=" + m.getId());
 
             if (valor == 1) {
                 System.out.println("Mascota modificada correctamente");

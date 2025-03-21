@@ -27,7 +27,7 @@ public class Consulta extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JComboBox cmbId;
-	private JComboBox cmbNombre;
+	private JComboBox cmbAnime;
 	private JComboBox cmbTipo;
 	private JTable tablaWaifus;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
@@ -45,14 +45,14 @@ public class Consulta extends JPanel {
 		cmbId.setBounds(110, 49, 166, 21);
 		add(cmbId);
 
-		cmbNombre = new JComboBox();
-		cmbNombre.addActionListener(new ActionListener() {
+		cmbAnime = new JComboBox();
+		cmbAnime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cargaTablaNombre();
 			}
 		});
-		cmbNombre.setBounds(378, 49, 166, 21);
-		add(cmbNombre);
+		cmbAnime.setBounds(378, 49, 166, 21);
+		add(cmbAnime);
 
 		cmbTipo = new JComboBox();
 		cmbTipo.addActionListener(new ActionListener() {
@@ -130,13 +130,13 @@ public class Consulta extends JPanel {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
-			if (cmbNombre.getSelectedItem().toString().equals("Selecciona un nombre")) {
+			if (cmbAnime.getSelectedItem().toString().equals("Selecciona un anime")) {
 				modeloTabla.setRowCount(0);
 			} else {
 
 				ResultSet registro = consulta
 						.executeQuery("select id, nombre, apellido, edad, tipo, anime, fecha_nacimiento "
-								+ "from waifus " + "where nombre = '" + cmbNombre.getSelectedItem() + "'");
+								+ "from waifus " + "where anime= '" + cmbAnime.getSelectedItem() + "'");
 
 				modeloTabla.setRowCount(0);
 
@@ -237,11 +237,11 @@ public class Consulta extends JPanel {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
 			Statement consulta = conexion.createStatement();
-			ResultSet registro = consulta.executeQuery("select nombre " + "from waifus");
-			cmbNombre.addItem("Selecciona un nombre");
+			ResultSet registro = consulta.executeQuery("select distinct (anime) " + "from waifus");
+			cmbAnime.addItem("Selecciona un anime");
 
 			while (registro.next()) {
-				cmbNombre.addItem(registro.getNString("nombre"));
+				cmbAnime.addItem(registro.getNString("anime"));
 
 			}
 			conexion.close();

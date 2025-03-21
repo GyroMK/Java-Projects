@@ -6,6 +6,10 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\fri11\Documents\Java-Projects\eclipse-workspace\Ejemplos UT1"/>
+			<item value="C:\Users\fri11\Documents\Java-Projects\eclipse-workspace\CarreraHilos"/>
+			<item value="C:\Users\fri11\Documents\Java-Projects\eclipse-workspace\VentanaVeterinarioDos"/>
+			<item value="C:\Users\fri11\Documents\Java-Projects\eclipse-workspace\ventanaBBDDw"/>
 			<item value="C:\Users\sergi.carmona\Documents\Java-Projects\eclipse-workspace\ventanaBBDDw"/>
 			<item value="C:\Users\sergi.carmona\Documents\Java-Projects\eclipse-workspace\EjemploCargandoJTable"/>
 			<item value="C:\Users\sergi.carmona\Documents\Java-Projects\eclipse-workspace\VentanaVeterinarioDos"/>

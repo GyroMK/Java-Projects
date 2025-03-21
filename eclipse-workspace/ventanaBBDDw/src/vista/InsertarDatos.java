@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class InsertarDatos extends JPanel {
 
@@ -64,7 +65,7 @@ public class InsertarDatos extends JPanel {
 		
 		txtFecha = new JTextField();
 		txtFecha.setColumns(10);
-		txtFecha.setBounds(228, 387, 638, 25);
+		txtFecha.setBounds(245, 387, 638, 25);
 		add(txtFecha);
 		
 		JTextArea txtrId = new JTextArea();
@@ -106,7 +107,7 @@ public class InsertarDatos extends JPanel {
 		txtrFecha.setText("Fecha de Nacimiento:");
 		txtrFecha.setFont(new Font("Monospaced", Font.BOLD, 18));
 		txtrFecha.setBackground(new Color(255, 255, 255));
-		txtrFecha.setBounds(0, 382, 218, 25);
+		txtrFecha.setBounds(10, 382, 218, 25);
 		add(txtrFecha);
 		
 		JButton btnInsertar = new JButton("INSERTAR");
@@ -135,7 +136,7 @@ public class InsertarDatos extends JPanel {
 		txtrInsertarMascota.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 26));
 		txtrInsertarMascota.setForeground(new Color(0, 0, 0));
 		txtrInsertarMascota.setText("Insertar Mascota");
-		txtrInsertarMascota.setBounds(535, 24, 277, 51);
+		txtrInsertarMascota.setBounds(232, 0, 277, 51);
 		add(txtrInsertarMascota);
 		
 		JTextArea txtrApellido = new JTextArea();
@@ -149,6 +150,34 @@ public class InsertarDatos extends JPanel {
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(155, 164, 252, 23);
 		add(txtApellido);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(59, 371, 46, 14);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(48, 297, 46, 14);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(49, 245, 46, 14);
+		add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setBounds(39, 198, 46, 14);
+		add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setBounds(49, 151, 46, 14);
+		add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setBounds(48, 100, 46, 14);
+		add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setBounds(28, 37, 46, 14);
+		add(lblNewLabel_6);
 
 	}
 }
