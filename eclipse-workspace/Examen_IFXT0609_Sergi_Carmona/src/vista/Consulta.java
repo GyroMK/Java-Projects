@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
@@ -54,42 +55,47 @@ public class Consulta extends JPanel {
 		scrollPane.setViewportView(tablaPersonajes);
 		tablaPersonajes.setBackground(new Color(255, 182, 193));
 		tablaPersonajes.setForeground(new Color(0, 0, 0));
-		modeloTabla.setColumnIdentifiers(new Object[] { "Id", "Nombre", "Pelicula", "Primera vez", "Pareja"});
+		modeloTabla.setColumnIdentifiers(new Object[] { "Id", "Nombre", "Pelicula", "Primera vez", "Pareja" });
 		tablaPersonajes.setModel(modeloTabla);
 
 		JLabel lblPeli = new JLabel("Pelicula");
 		lblPeli.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPeli.setBounds(344, 55, 79, 14);
 		add(lblPeli);
-		
+
 		JButton btnNewButton = new JButton("Guardar en fichero");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Personajes> arrLPersonajes = new ArrayList<>();
-				File archivo = new File("personajes.txt");
-		        PrintWriter pw = null;
+				int valor = JOptionPane.showConfirmDialog(null, "¿quieres guaradar el personaje?");
+				if (valor == JOptionPane.OK_OPTION) {
+					File archivo = new File("personajes.txt");
+					PrintWriter pw = null;
 
-		        try {
-		            pw = new PrintWriter(archivo);
-		            for (Personajes personajeActual : arrLPersonajes) {
-		                pw.println(personajeActual.getId());
-		                pw.println(personajeActual.getNombre());
-		                pw.println(personajeActual.getPelicula());
-		                pw.println(personajeActual.getPrimeraVez());
-		                pw.println(personajeActual.getPareja());
-		            }
+					try {
+						pw = new PrintWriter(archivo);
 
-		        } catch (FileNotFoundException r) {
-		            r.printStackTrace();
-		        } finally {
-		            if (pw != null) {
-		                pw.close();
-		            }
-		        }
-		        System.out.println("Guardado el archivo correctamente");
-		    }
-			
+						// Recorre la tabla y guarda cada fila en el archivo
+						for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+							pw.println(modeloTabla.getValueAt(i, 0));
+							pw.println(modeloTabla.getValueAt(i, 1));
+							pw.println(modeloTabla.getValueAt(i, 2));
+							pw.println(modeloTabla.getValueAt(i, 3));
+							pw.println(modeloTabla.getValueAt(i, 4));
+						}
+
+						System.out.println("Guardado el archivo correctamente");
+
+					} catch (FileNotFoundException r) {
+						r.printStackTrace();
+					} finally {
+						if (pw != null) {
+							pw.close();
+						}
+					}
+				}
+			}
 		});
+
 		btnNewButton.setBounds(386, 491, 184, 23);
 		add(btnNewButton);
 
@@ -97,7 +103,6 @@ public class Consulta extends JPanel {
 
 	}
 
-			
 	public void cargaTablaEspecie() {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/waifudb", "root", "");
@@ -117,13 +122,9 @@ public class Consulta extends JPanel {
 				arrLPersonajes = bd.consultaPersonajeConFiltro(miPersonaje);
 
 				for (Personajes personajeActual : arrLPersonajes) {
-					modeloTabla.addRow(new Object[] {
-							personajeActual.getId(), 
-							personajeActual.getNombre(),
-							personajeActual.getPelicula(),
-							personajeActual.getPrimeraVez(),
-							personajeActual.getPareja(), 
-					});
+					modeloTabla.addRow(new Object[] { personajeActual.getId(), personajeActual.getNombre(),
+							personajeActual.getPelicula(), personajeActual.getPrimeraVez(),
+							personajeActual.getPareja(), });
 				}
 
 			}
@@ -134,6 +135,7 @@ public class Consulta extends JPanel {
 
 		}
 	}
+
 	public void cargaComboId() {
 		try {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/personajesDisney", "root", "");
