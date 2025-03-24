@@ -1,0 +1,4 @@
+1.descargar(todo)
+2.leer json
+3.guardar en el onjeto deseado
+4.mostrar em javaswing

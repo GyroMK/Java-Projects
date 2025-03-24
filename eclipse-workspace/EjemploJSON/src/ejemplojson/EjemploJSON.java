@@ -46,7 +46,7 @@ public class EjemploJSON {
 		EjemploJSON gestor = new EjemploJSON();
 
 		try {
-			int codigoEstado = gestor.almacenarPagina(esquema, servidor, pelicula, "E:/" + pelicula.concat(".json"));
+			int codigoEstado = gestor.almacenarPagina(esquema, servidor, pelicula, "C:\\Users\\sergi.carmona\\Documents\\Java-Projects\\eclipse-workspace\\EjemploJSON\\" + pelicula.concat(".json"));
 			System.out.println("Nombre de la pelicula:" + pelicula);
 			if (codigoEstado == HttpURLConnection.HTTP_OK) {
 				System.out.println("Descarga finalizada");
